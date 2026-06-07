@@ -1,0 +1,36 @@
+# Core Django
+Django==5.1.7
+djangorestframework==3.16.1
+djangorestframework_simplejwt==5.5.1
+django-cors-headers==4.9.0
+django-redis==6.0.0
+dj-database-url==2.3.0
+
+# ASGI / WebSockets
+channels==4.2.2
+channels_redis==4.2.1
+daphne==4.1.2
+
+# Database
+psycopg2-binary==2.9.10
+
+# Storage / Media
+cloudinary==1.44.1
+
+# Auth / Env
+python-dotenv==1.0.1
+python-decouple==3.8
+PyJWT==2.10.1
+
+# Async helpers
+asgiref==3.8.1
+redis==5.2.1
+
+# HTTP
+requests==2.32.3
+httpx==0.27.2
+
+# Utils
+Pillow==10.4.0
+celery==5.4.0
+stripe==12.5.1
