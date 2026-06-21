@@ -6,7 +6,6 @@ LinkChat is a full-stack web application designed to connect people from around 
 
 ![LinkChat Welcome](frontend/public/landing.png)
 ![LinkChat Chat](frontend/public/chat.png)
-![LinkChat Video](frontend/public/video.png)
 
 ## ✨ Features
 
