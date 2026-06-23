@@ -1,14 +1,17 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom"; // Use NavLink for navigation items
+import { useAuth } from "../hooks/useAuth";
 
 const Navbar: React.FC = () => {
+  const { isAuthenticated, logout } = useAuth();
+
   return (
     <nav className="fixed w-full top-0 z-50 bg-[#0a0a0a]/70 backdrop-blur-md border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Left Side: Logo and Brand (using Link for non-nav items) */}
           <Link to="/">
-            <img src="/LinkChatLogo.jpeg" alt="LinkChat Logo" className="h-10 w-auto"  />
+            <img src="/LinkChatLogo.jpeg" alt="LinkChat Logo" className="h-10 w-auto" />
           </Link>
 
           {/* Center: Navigation Links using NavLink */}
@@ -42,18 +45,29 @@ const Navbar: React.FC = () => {
 
           {/* Right Side: Action Buttons */}
           <div className="flex items-center gap-4">
-            <Link
-              to="/login"
-              className="px-4 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300"
-            >
-              Log In
-            </Link>
-            <Link
-              to="/signup"
-              className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 shadow-lg shadow-emerald-500/25 transition-all duration-300 transform hover:-translate-y-0.5"
-            >
-              Sign Up
-            </Link>
+            {isAuthenticated ? (
+              <button
+                onClick={logout}
+                className="px-4 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-red-500/10 hover:text-red-400 transition-all duration-300"
+              >
+                Log Out
+              </button>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="px-4 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300"
+                >
+                  Log In
+                </Link>
+                <Link
+                  to="/signup"
+                  className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 shadow-lg shadow-emerald-500/25 transition-all duration-300 transform hover:-translate-y-0.5"
+                >
+                  Sign Up
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ type Mode = "chat" | "video" | "voice";
 const HomePage: React.FC = () => {
   const [mode, setMode] = useState<Mode>("chat");
   const [sessionId, setSessionId] = useState<string | null>(null);
+  const [chatKey, setChatKey] = useState<number>(0);
   const { isAuthenticated } = useAuth();
 
   const handleStartVideo = useCallback((newSessionId: string) => {
@@ -23,6 +24,7 @@ const HomePage: React.FC = () => {
   const handleLeave = useCallback(() => {
     setSessionId(null);
     setMode("chat");
+    setChatKey(prev => prev + 1);
   }, []);
 
   if (isAuthenticated) {
@@ -53,7 +55,7 @@ const HomePage: React.FC = () => {
         </header>
         <main className="flex-1 flex flex-col bg-black rounded-2xl shadow-xl border border-gray-700 overflow-hidden max-w-5xl w-full mx-auto">
           {mode === "chat" ? (
-            <ChatRoom onStartVideo={handleStartVideo} onStartVoice={handleStartVoice} onLeave={handleLeave} />
+            <ChatRoom key={`chat-${chatKey}`} onStartVideo={handleStartVideo} onStartVoice={handleStartVoice} onLeave={handleLeave} />
           ) : mode === "video" ? (
             <VideoCall sessionId={sessionId!} isVideo={true} onLeaveVideo={handleLeave} />
           ) : (
