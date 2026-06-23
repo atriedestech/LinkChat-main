@@ -1,4 +1,4 @@
-# 🔗 LinkChat - https://linkchat-seven.vercel.app/
+# 🔗 LinkChat -  https://link-chat-main.vercel.app/
 
 **Connect Instantly, Chat Anonymously. Real-time anonymous chat and video calls.**
 
