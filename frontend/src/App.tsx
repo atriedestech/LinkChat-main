@@ -8,7 +8,7 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col">
       <AuthProvider>
         <Navbar />
-        <main className="flex-1 p-4">
+        <main className="flex-1 p-4 pt-20">
           <AppRoutes />
         </main>
       </AuthProvider>
